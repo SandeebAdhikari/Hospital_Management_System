@@ -39,7 +39,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
         </svg>
       </div>
       <form onSubmit={onSubmit} className="-mt-32 flex flex-col w-full p-4">
-        <h2 className="mt-8 text-[32px] text-white font-bold">
+        <h2 className="mt-8 text-[32px] text-white">
           {type === "signIn" ? "Sign In" : "Sign Up"}
         </h2>
 
