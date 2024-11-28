@@ -1,27 +1,6 @@
 import React from "react";
 import Link from "next/link";
 
-interface FormData {
-  username: string;
-  password: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  address?: string;
-  city?: string;
-  state?: string;
-  zip?: string;
-  dob?: string;
-  ssn?: string;
-}
-
-interface AuthFormProps {
-  type: "signIn" | "signUp";
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  formData: FormData;
-}
-
 const AuthForm: React.FC<AuthFormProps> = ({
   type,
   onChange,

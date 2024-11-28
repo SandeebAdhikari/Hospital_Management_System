@@ -2,14 +2,8 @@
 import React, { useState } from "react";
 import AuthForm from "@/components/AuthForm";
 
-interface FormData {
-  username: string;
-  email: string;
-  password: string;
-}
-
 const SignUpPage: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<AuthFormData>({
     username: "",
     email: "",
     password: "",
