@@ -136,7 +136,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               Don&apos;t have an account?{" "}
               <Link
                 href="/signUp"
-                className="text-gray  hover:cursor-pointer hover:underline"
+                className="text-gray  hover:cursor-pointer hover:underline hover:font-bold"
               >
                 Sign Up
               </Link>
@@ -146,7 +146,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               Already have an account?{" "}
               <Link
                 href="/signIn"
-                className="text-gray hover:cursor-pointer hover:underline"
+                className="text-gray hover:cursor-pointer hover:underline hover:font-bold"
               >
                 Sign In
               </Link>
