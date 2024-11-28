@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import AuthForm from "@/components/AuthForm"; // Adjust the path based on your folder structure
+import AuthForm from "@/components/AuthForm";
 
 interface FormData {
   username: string;
@@ -9,14 +9,12 @@ interface FormData {
 }
 
 const SignUpPage: React.FC = () => {
-  // State to manage form data
   const [formData, setFormData] = useState<FormData>({
     username: "",
     email: "",
     password: "",
   });
 
-  // Handle input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -25,10 +23,8 @@ const SignUpPage: React.FC = () => {
     }));
   };
 
-  // Handle form submission
   const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Perform your sign-up logic here
     console.log("Sign-Up Data:", formData);
   };
 
