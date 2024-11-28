@@ -5,6 +5,14 @@ interface FormData {
   username: string;
   password: string;
   email?: string;
+  firstName?: string;
+  lastName?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  dob?: string;
+  ssn?: string;
 }
 
 interface AuthFormProps {
@@ -22,8 +30,8 @@ const AuthForm: React.FC<AuthFormProps> = ({
 }) => {
   return (
     <div
-      className={`flex p-5 items-center justify-center w-[400px] shadow-white/35 shadow-md ${
-        type === "signIn" ? "h-[373px]" : "h-[418px]"
+      className={`flex p-5 items-center justify-center w-[400px]  ${
+        type === "signIn" ? "h-[373px] " : "h-auto"
       }  rounded-[20px]`}
     >
       <form onSubmit={onSubmit} className="flex flex-col w-full p-4">
@@ -32,15 +40,86 @@ const AuthForm: React.FC<AuthFormProps> = ({
         </h2>
 
         {type === "signUp" && (
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email || ""}
-            onChange={onChange}
-            required
-            className="w-[336px] h-[37px] mt-10 p-2 border-b border-[#5A698F] bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
-          />
+          <>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName || ""}
+                onChange={onChange}
+                required
+                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={formData.lastName || ""}
+                onChange={onChange}
+                required
+                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              />
+            </div>
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              value={formData.address || ""}
+              onChange={onChange}
+              required
+              className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+            />
+            <input
+              type="text"
+              name="city"
+              placeholder="City"
+              value={formData.city || ""}
+              onChange={onChange}
+              required
+              className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+            />
+            <div className="flex gap-2">
+              <input
+                type="text"
+                name="state"
+                placeholder="State"
+                value={formData.state || ""}
+                onChange={onChange}
+                required
+                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              />
+              <input
+                type="text"
+                name="zip"
+                placeholder="Zip Code"
+                value={formData.zip || ""}
+                onChange={onChange}
+                required
+                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              />
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                name="dob"
+                placeholder="Date of Birth"
+                value={formData.dob || ""}
+                onChange={onChange}
+                required
+                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              />
+              <input
+                type="text"
+                name="ssn"
+                placeholder="SSN"
+                value={formData.ssn || ""}
+                onChange={onChange}
+                required
+                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              />
+            </div>
+          </>
         )}
         <input
           type="username"
@@ -51,7 +130,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           required
           className={`w-[336px] h-[37px] ${
             type === "signIn" ? "mt-10" : "mt-6"
-          } p-2 border-b border-[#5A698F] bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer`}
+          } p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer`}
         />
         <input
           type="password"
@@ -60,7 +139,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           value={formData.password}
           onChange={onChange}
           required
-          className="w-[336px] h-[37px] mt-6 p-2 border-b border-[#5A698F] bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+          className="w-[336px] h-[37px] mt-6 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
         />
 
         <button
@@ -78,7 +157,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               Don&apos;t have an account?{" "}
               <Link
                 href="/signUp"
-                className="text-gray-400  hover:cursor-pointer"
+                className="text-gray  hover:cursor-pointer hover:underline"
               >
                 Sign Up
               </Link>
@@ -88,7 +167,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               Already have an account?{" "}
               <Link
                 href="/signIn"
-                className="text-gray-400 hover:cursor-pointer"
+                className="text-gray hover:cursor-pointer hover:underline"
               >
                 Sign In
               </Link>
