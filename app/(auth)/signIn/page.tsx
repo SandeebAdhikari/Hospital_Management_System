@@ -1,7 +1,7 @@
 import React from "react";
 
-const signIn = () => {
-  return <div>signIn</div>;
+const SignIn = () => {
+  return <div className="flex items-center justify-center "></div>;
 };
 
-export default signIn;
+export default SignIn;

@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
+import { Jost } from "next/font/google";
 
 import "./globals.css";
+
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jost",
+});
 
 export const metadata: Metadata = {
   title: "HMS",
@@ -14,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#f2f2f2] text-black">{children}</body>
+      <body className={jost.variable}>{children}</body>
     </html>
   );
 }
