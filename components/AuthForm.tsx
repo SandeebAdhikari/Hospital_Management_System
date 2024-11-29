@@ -53,7 +53,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 value={formData.firstName || ""}
                 onChange={onChange}
                 required
-                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+                className="input-field"
               />
               <input
                 type="text"
@@ -62,7 +62,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 value={formData.lastName || ""}
                 onChange={onChange}
                 required
-                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+                className="input-field"
               />
             </div>
             <input
@@ -72,7 +72,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               value={formData.address || ""}
               onChange={onChange}
               required
-              className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              className="input-field"
             />
             <input
               type="text"
@@ -81,7 +81,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               value={formData.city || ""}
               onChange={onChange}
               required
-              className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+              className="input-field"
             />
             <div className="flex gap-2">
               <input
@@ -91,7 +91,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 value={formData.state || ""}
                 onChange={onChange}
                 required
-                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+                className="input-field"
               />
               <input
                 type="text"
@@ -100,7 +100,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 value={formData.zip || ""}
                 onChange={onChange}
                 required
-                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+                className="input-field"
               />
             </div>
             <div className="flex gap-2">
@@ -111,7 +111,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 value={formData.dob || ""}
                 onChange={onChange}
                 required
-                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+                className="input-field"
               />
               <input
                 type="text"
@@ -120,7 +120,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 value={formData.ssn || ""}
                 onChange={onChange}
                 required
-                className="w-[336px] h-[37px] mt-10 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+                className="input-field"
               />
             </div>
           </>
@@ -134,7 +134,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           required
           className={`w-[336px] h-[37px] ${
             type === "signIn" ? "mt-10" : "mt-6"
-          } p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer`}
+          } p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer hover:placeholder:text-white`}
         />
         <input
           type="password"
@@ -143,13 +143,10 @@ const AuthForm: React.FC<AuthFormProps> = ({
           value={formData.password}
           onChange={onChange}
           required
-          className="w-[336px] h-[37px] mt-6 p-2 border-b border-gray bg-transparent outline-none focus:ring-0 text-white hover:border-b-white hover:cursor-pointer"
+          className="input-field"
         />
 
-        <button
-          type="submit"
-          className="mt-6 bg-transparent shadow-white/35 shadow-sm text-white p-2 w-[336px] h-[48px] rounded hover:bg-white hover:text-black"
-        >
+        <button type="submit" className="primary-button">
           <span className="text-[15px] font-light">
             {type === "signIn" ? "Login to your account" : "Create an account"}
           </span>
@@ -159,20 +156,14 @@ const AuthForm: React.FC<AuthFormProps> = ({
           {type === "signIn" ? (
             <>
               Don&apos;t have an account?{" "}
-              <Link
-                href="/signUp"
-                className="text-gray  hover:cursor-pointer hover:underline hover:font-bold"
-              >
+              <Link href="/signUp" className="auth-link">
                 Sign Up
               </Link>
             </>
           ) : (
             <>
               Already have an account?{" "}
-              <Link
-                href="/signIn"
-                className="text-gray hover:cursor-pointer hover:underline hover:font-bold"
-              >
+              <Link href="/signIn" className="auth-link">
                 Sign In
               </Link>
             </>
