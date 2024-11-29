@@ -13,7 +13,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
         type === "signIn" ? "h-[373px] " : "max-h-screen"
       }  rounded-[20px]`}
     >
-      <div className="">
+      <Link href={"/signIn"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlSpace="preserve"
@@ -37,7 +37,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
             </g>
           </g>
         </svg>
-      </div>
+      </Link>
       <form onSubmit={onSubmit} className="-mt-32 flex flex-col w-full p-4">
         <h2 className="mt-8 text-[32px] text-white">
           {type === "signIn" ? "Sign In" : "Sign Up"}
