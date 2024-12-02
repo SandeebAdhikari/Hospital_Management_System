@@ -7,6 +7,11 @@ const connectDB = async () => {
       useUnifiedTopology: true,
     });
     console.log("MongoDB connected...");
+    console.log("Database Name:", mongoose.connection.name);
+    console.log(
+      "Collections:",
+      await mongoose.connection.db.listCollections().toArray()
+    );
   } catch (err) {
     console.error(err.message);
     process.exit(1);

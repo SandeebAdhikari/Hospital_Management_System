@@ -1,42 +1,68 @@
-const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const User = require("../models/userModel");
 
 exports.signUp = async (req, res) => {
-  try {
-    const { username, email, password, ...otherDetails } = req.body;
+  const {
+    username,
+    email,
+    password,
+    firstName,
+    lastName,
+    address,
+    city,
+    state,
+    zip,
+    dob,
+    ssn,
+  } = req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     const newUser = new User({
       username,
       email,
       password: hashedPassword,
-      ...otherDetails,
+      firstName,
+      lastName,
+      address,
+      city,
+      state,
+      zip,
+      dob,
+      ssn,
     });
 
-    await newUser.save();
-    res.status(201).json({ message: "User created successfully" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const user = await newUser.save();
+    res.status(201).json({ message: "User registered successfully", user });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
   }
 };
 
 exports.signIn = async (req, res) => {
-  try {
-    const { username, password } = req.body;
+  const { username, password } = req.body;
 
+  try {
     const user = await User.findOne({ username });
-    if (!user) return res.status(404).json({ message: "User not found" });
+    if (!user) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch)
-      return res.status(401).json({ message: "Invalid credentials" });
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
     res.json({ token });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
   }
 };
