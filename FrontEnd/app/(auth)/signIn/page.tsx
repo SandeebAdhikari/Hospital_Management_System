@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import AuthForm from "@/components/AuthForm";
 import { useRouter } from "next/navigation";
+import { apiCall } from "@/utils/api";
 
 const SignInPage: React.FC = () => {
   const router = useRouter();
@@ -18,9 +19,21 @@ const SignInPage: React.FC = () => {
     }));
   };
 
-  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Sign-In Data:", formData);
+
+    try {
+      const response = await apiCall("/api/auth/signin", "POST", formData);
+      console.log("Login successful:", response);
+      alert("Login successful!");
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Error during sign-in:", error.message);
+      } else {
+        console.error("Error during sign-in:", error);
+      }
+      alert("Sign-in failed!");
+    }
   };
 
   return (

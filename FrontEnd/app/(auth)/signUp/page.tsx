@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import AuthForm from "@/components/AuthForm";
+import { apiCall } from "@/utils/api";
 
 const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -25,9 +26,21 @@ const SignUpPage: React.FC = () => {
     }));
   };
 
-  const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Sign-Up Data:", formData);
+
+    try {
+      const response = await apiCall("/api/auth/signup", "POST", formData);
+      console.log("User registered successfully:", response);
+      alert("User registered successfully!");
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Error during sign-up:", error.message);
+      } else {
+        console.error("Error during sign-up:", error);
+      }
+      alert("Sign-up failed!");
+    }
   };
 
   return (
