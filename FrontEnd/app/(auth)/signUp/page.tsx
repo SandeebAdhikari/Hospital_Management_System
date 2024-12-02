@@ -18,6 +18,8 @@ const SignUpPage: React.FC = () => {
     ssn: "",
   });
 
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -30,7 +32,7 @@ const SignUpPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await apiCall("/api/auth/signup", "POST", formData);
+      const response = await apiCall("/api/auth/signUp", "POST", formData);
       console.log("User registered successfully:", response);
       alert("User registered successfully!");
     } catch (error) {

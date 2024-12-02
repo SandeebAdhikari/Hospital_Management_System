@@ -123,6 +123,15 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 className="input-field"
               />
             </div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email || ""}
+              onChange={onChange}
+              required
+              className="input-field"
+            />
           </>
         )}
         <input
