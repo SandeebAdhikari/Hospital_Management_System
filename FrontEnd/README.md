@@ -1,3 +1,3 @@
 # Hospital Management System
 
-![preview image](/public/preview.png)
+![preview image](/FrontEnd/public/preview.png)
