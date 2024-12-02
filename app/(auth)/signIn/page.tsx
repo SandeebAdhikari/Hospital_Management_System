@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import AuthForm from "@/components/AuthForm";
+import { useRouter } from "next/navigation";
 
 const SignInPage: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState<AuthFormData>({
     username: "",
     password: "",

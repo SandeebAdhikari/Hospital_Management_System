@@ -3,10 +3,18 @@ import React, { useState } from "react";
 import AuthForm from "@/components/AuthForm";
 
 const SignUpPage: React.FC = () => {
-  const [formData, setFormData] = useState<AuthFormData>({
+  const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    dob: "",
+    ssn: "",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
