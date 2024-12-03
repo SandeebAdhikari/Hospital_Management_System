@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import AuthForm from "@/components/AuthForm";
 import { apiCall } from "@/utils/api";
+import { useRouter } from "next/navigation";
 
 const SignUpPage: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -18,8 +20,6 @@ const SignUpPage: React.FC = () => {
     ssn: "",
   });
 
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -32,9 +32,17 @@ const SignUpPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await apiCall("/api/auth/signUp", "POST", formData);
-      console.log("User registered successfully:", response);
-      alert("User registered successfully!");
+      const { data, status } = await apiCall(
+        "/api/auth/signup",
+        "POST",
+        formData
+      );
+
+      if (status === 201) {
+        console.log("Sign-up successful:", status);
+
+        router.push("/signIn");
+      }
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error during sign-up:", error.message);

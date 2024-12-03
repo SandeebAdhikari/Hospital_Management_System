@@ -6,6 +6,7 @@ interface ApiCallOptions {
 
 interface ApiResponse<T> {
   data: T;
+  status: number;
 }
 
 export const apiCall = async <T>(
@@ -31,5 +32,5 @@ export const apiCall = async <T>(
     throw new Error(`API Error: ${response.status}`);
   }
   const data: T = await response.json();
-  return { data };
+  return { data, status: response.status };
 };

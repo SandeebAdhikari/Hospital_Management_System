@@ -23,9 +23,15 @@ const SignInPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await apiCall("/api/auth/signin", "POST", formData);
-      console.log("Login successful:", response);
-      alert("Login successful!");
+      const { data, status } = await apiCall(
+        "/api/auth/signin",
+        "POST",
+        formData
+      );
+      if (status === 200) {
+        console.log("Sign In successful:", status);
+        router.push("/main");
+      }
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error during sign-in:", error.message);
